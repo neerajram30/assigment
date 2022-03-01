@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import UserCard from './Components/UserCard/UserCard'
+import {useEffect,useState} from "react"
+import Loading from 'react-loading-components';
+import "./app.css"
 
 function App() {
+  const [mainload,setMainload] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setMainload(false);
+    }, 2000);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+
+      {mainload ?
+      <div className='mainload'>
+
+      <Loading type='bars' width={50} height={50} fill='#395B64' />
+      </div> 
+      
+      :<UserCard/>}
+
     </div>
   );
 }
